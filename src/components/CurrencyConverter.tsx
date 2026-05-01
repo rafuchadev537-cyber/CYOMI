@@ -104,14 +104,12 @@ export default function CurrencyConverter() {
           </nav>
         </div>
         <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2 mr-4 hidden md:flex">
+          <div className="flex items-center gap-2 md:flex">
              <div className={cn("w-2 h-2 rounded-full", isDemoMode ? "bg-amber-400" : "bg-green-500")} />
              <span className="text-[10px] font-bold uppercase tracking-widest opacity-60">
                {isDemoMode ? "Limited Mode" : "Live Market"}
              </span>
           </div>
-          <button className="text-sm font-medium hover:underline px-4">Sign In</button>
-          <button className="bg-xe-blue hover:bg-blue-600 px-5 py-2 rounded-full text-sm font-bold transition-colors">Register</button>
         </div>
       </header>
 

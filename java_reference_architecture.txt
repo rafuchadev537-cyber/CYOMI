@@ -1,0 +1,112 @@
+/* 
+ * --------------------------------------------------------------------------------
+ * JAVA REFERENCE IMPLEMENTATION (As requested in the role prompt)
+ * --------------------------------------------------------------------------------
+ * This file contains the architecture for a JavaFX version of the application.
+ * In this environment, we have deployed the React version for the live preview.
+ * --------------------------------------------------------------------------------
+ */
+
+// --- Model: Currency_Rate.java ---
+/*
+package com.converter.model;
+
+public class CurrencyRate {
+    private String base;
+    private String target;
+    private double rate;
+
+    public CurrencyRate(String base, String target, double rate) {
+        this.base = base;
+        this.target = target;
+        this.rate = rate;
+    }
+
+    // Getters and Setters...
+}
+*/
+
+// --- Service: CurrencyService.java ---
+/*
+package com.converter.service;
+
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+public class CurrencyService {
+    private static final String API_KEY = "YOUR_API_KEY_HERE";
+    private static final String BASE_URL = "https://v6.exchangerate-api.com/v6/";
+
+    public double getExchangeRate(String from, String to) throws Exception {
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+            .uri(java.net.URI.create(BASE_URL + API_KEY + "/pair/" + from + "/" + to))
+            .build();
+
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        JsonObject json = JsonParser.parseString(response.body()).getAsJsonObject();
+        
+        return json.get("conversion_rate").getAsDouble();
+    }
+}
+*/
+
+// --- Controller: ConverterController.java ---
+/*
+package com.converter.controller;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.*;
+import com.converter.service.CurrencyService;
+
+public class ConverterController {
+    @FXML private TextField amountInput;
+    @FXML private ComboBox<String> fromCombo;
+    @FXML private ComboBox<String> toCombo;
+    @FXML private Label resultLabel;
+
+    private final CurrencyService service = new CurrencyService();
+
+    @FXML
+    public void handleConvert() {
+        try {
+            double amount = Double.parseDouble(amountInput.getText());
+            double rate = service.getExchangeRate(fromCombo.getValue(), toCombo.getValue());
+            resultLabel.setText(String.format("%.2f", amount * rate));
+        } catch (Exception e) {
+            System.err.println("Conversion Error: " + e.getMessage());
+        }
+    }
+    
+    @FXML
+    public void handleReverse() {
+        String from = fromCombo.getValue();
+        fromCombo.setValue(toCombo.getValue());
+        toCombo.setValue(from);
+    }
+}
+*/
+
+/*
+<!-- pom.xml Dependencies -->
+<dependencies>
+    <dependency>
+        <groupId>com.google.code.gson</groupId>
+        <artifactId>gson</artifactId>
+        <version>2.10.1</version>
+    </dependency>
+    <dependency>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-controls</artifactId>
+        <version>21</version>
+    </dependency>
+    <dependency>
+        <groupId>org.jfree</groupId>
+        <artifactId>jfreechart</artifactId>
+        <version>1.5.4</version>
+    </dependency>
+</dependencies>
+*/

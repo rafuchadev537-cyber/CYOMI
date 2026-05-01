@@ -1,0 +1,37 @@
+.root {
+    -xe-navy: #00215e;
+    -xe-blue: #1a8dff;
+    -xe-bg: #f0f5fa;
+}
+
+.header {
+    -fx-background-color: -xe-navy;
+    -fx-padding: 20;
+}
+
+.card {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 4);
+    -fx-padding: 30;
+}
+
+.btn-primary {
+    -fx-background-color: -xe-blue;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-padding: 12 24;
+}
+
+.combo-box {
+    -fx-background-color: white;
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 8;
+}
+
+.amount-field {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-padding: 10;
+}

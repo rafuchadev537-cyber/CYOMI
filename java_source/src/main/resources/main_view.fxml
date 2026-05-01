@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.currency.controller.ConverterController" spacing="0">
+    
+    <!-- Top Header -->
+    <HBox styleClass="header" alignment="CENTER_LEFT">
+        <Label text="XE" style="-fx-text-fill: white; -fx-font-size: 24; -fx-font-weight: bold; -fx-font-style: italic;"/>
+        <Label text=" Global Currency" style="-fx-text-fill: rgba(255,255,255,0.7); -fx-font-size: 16;"/>
+    </HBox>
+
+    <!-- Content Area -->
+    <StackPane VBox.vgrow="ALWAYS" style="-fx-background-color: #f0f5fa;">
+        <padding><Insets top="40" right="40" bottom="40" left="40"/></padding>
+        
+        <VBox styleClass="card" maxWidth="600" maxHeight="400" spacing="25">
+            <HBox spacing="20">
+                <VBox spacing="5" HBox.hgrow="ALWAYS">
+                    <Label text="Amount" style="-fx-font-weight: bold;"/>
+                    <TextField fx:id="amountField" text="1000" styleClass="amount-field"/>
+                </VBox>
+                
+                <VBox spacing="5">
+                    <Label text="From" style="-fx-font-weight: bold;"/>
+                    <ComboBox fx:id="fromCombo" prefWidth="120"/>
+                </VBox>
+                
+                <Button onAction="#handleReverse" text="⇌" style="-fx-font-size: 18;"/>
+                
+                <VBox spacing="5">
+                    <Label text="To" style="-fx-font-weight: bold;"/>
+                    <ComboBox fx:id="toCombo" prefWidth="120"/>
+                </VBox>
+            </HBox>
+
+            <Separator/>
+
+            <VBox spacing="10">
+                <Label fx:id="resultLabel" text="920.00 EUR" style="-fx-font-size: 32; -fx-font-weight: bold; -fx-text-fill: #00215e;"/>
+                <Label fx:id="rateInfoLabel" text="1 USD = 0.9200 EUR" style="-fx-text-fill: #888;"/>
+            </VBox>
+
+            <HBox spacing="10" alignment="CENTER_RIGHT">
+                <Button onAction="#handleConvert" text="Convert" styleClass="btn-primary" style="-fx-background-color: #ddd; -fx-text-fill: #333;"/>
+                <Button text="Send Money" styleClass="btn-primary"/>
+            </HBox>
+        </VBox>
+    </StackPane>
+</VBox>
